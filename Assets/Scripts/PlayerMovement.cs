@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTime = 0.4f;
     private float jumpTimeCounter;
     private bool isJumping;
+    
+    private float maxHealth = 5f;
+    private float currHealth;
+    public HPBar bar;
+    public float hit = 1f;
+    public float attackCooldown = 1f;
 
     private enum PlayerState
     {
@@ -32,6 +38,15 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        currHealth = PlayerPrefs.GetFloat("CurrHealth", maxHealth);
+        bar = FindObjectOfType<HPBar>();
+        if (bar == null)
+        {
+            Debug.LogError("bar not found in the scene.");
+        }
+        Debug.Log("max "+ maxHealth);
+        bar.SetValue(currHealth, maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -102,7 +117,17 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("state", (int)state);
     }
 
-    private bool isGrounded(){
+    public bool isGrounded(){
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
+    }
+    
+    public void updateHealth(float healthChange)
+    {
+        currHealth += healthChange;
+        currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
+        PlayerPrefs.SetFloat("CurrHealth", currHealth);
+        PlayerPrefs.Save();
+        Debug.Log("currHealth" + currHealth);
+        bar.SetValue(currHealth, maxHealth);
     }
 }

@@ -39,4 +39,5 @@ public class EnemyMovement : MonoBehaviour
         }
         transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, speed * Time.deltaTime);
     }
+    
 }
