@@ -15,12 +15,18 @@ public class collectItem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            
             if (!isPlayed)
             {
                 isPlayed = true;
                 soundEffect.Play();
+                PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+                if (player != null)
+                {
+                    player.updateHealth(1);
+                }
             }
-            Destroy(gameObject);
+            Destroy(gameObject, soundEffect.clip.length);
         }
     }
 }
