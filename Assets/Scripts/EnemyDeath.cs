@@ -53,7 +53,7 @@ public class EnemyDeath : MonoBehaviour
                     PlayerPrefs.Save();
                 }
             }
-            else if(player.isGrounded())
+            else
             {
                 if (Time.time - lastAttackTime > attackCooldown)
                 {
