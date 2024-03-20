@@ -23,7 +23,7 @@ public class collectItem : MonoBehaviour
                 PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
                 if (player != null)
                 {
-                    player.updateHealth(1);
+                    player.UpdateHealth(1);
                 }
             }
             Destroy(gameObject, soundEffect.clip.length);

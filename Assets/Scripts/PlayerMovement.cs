@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
     }
     
-    public void updateHealth(float healthChange)
+    public void UpdateHealth(float healthChange)
     {
         currHealth += healthChange;
         currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
@@ -129,5 +129,14 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("currHealth" + currHealth);
         bar.SetValue(currHealth, maxHealth);
+        if (currHealth == 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Lose");
     }
 }

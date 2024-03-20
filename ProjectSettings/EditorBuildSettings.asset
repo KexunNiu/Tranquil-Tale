@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseMenu.unity
     guid: cb6ae31cb7b222a4baa8bdfec2369fdb
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 0450e166a11634da1947e7990916411a
   m_configObjects: {}

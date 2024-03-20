@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Tutorial");
+        PlayerPrefs.DeleteAll();
     }
     public void Resume()
     {

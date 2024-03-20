@@ -12345,6 +12345,8 @@ MonoBehaviour:
   jump: 10
   jumpTime: 0.4
   bar: {fileID: 0}
+  hit: 1
+  attackCooldown: 1
 --- !u!95 &1259572255
 Animator:
   serializedVersion: 4

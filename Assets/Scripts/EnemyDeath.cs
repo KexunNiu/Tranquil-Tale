@@ -60,7 +60,7 @@ public class EnemyDeath : MonoBehaviour
                     soundEffect.clip = attackSoundEffect;
                     soundEffect.Play(); 
                     Debug.Log("attack");
-                    player.updateHealth(attack);
+                    player.UpdateHealth(attack);
                     lastAttackTime = Time.time;
                 }
             }
