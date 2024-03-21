@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
+
     public void Resume()
     {
         Time.timeScale = 1;
