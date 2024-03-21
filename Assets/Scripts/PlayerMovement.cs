@@ -38,9 +38,12 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        PlayerPrefs.SetFloat("speed", speed);
-        PlayerPrefs.SetFloat("jump", jump);
+
+        //get player attribute from PlayerPrefs
+        speed = PlayerPrefs.GetFloat("speed", speed);
+        jump = PlayerPrefs.GetFloat("jump", jump);
         currHealth = PlayerPrefs.GetFloat("CurrHealth", maxHealth);
+        
         bar = FindObjectOfType<HPBar>();
         if (bar == null)
         {
@@ -54,9 +57,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //get player attribute from PlayerPrefs
-        speed = PlayerPrefs.GetFloat("speed", speed);
-        jump = PlayerPrefs.GetFloat("jump", jump);
+
 
         float horizontal = Input.GetAxis("Horizontal");
         rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
@@ -139,6 +140,20 @@ public class PlayerMovement : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    public void UpdateSpeed(float speedChange)
+    {
+        speed += speedChange;
+        PlayerPrefs.SetFloat("speed", speed);
+        PlayerPrefs.Save();
+    }
+
+    public void UpdateJump(float jumpChange)
+    {
+        jump += jumpChange;
+        PlayerPrefs.SetFloat("jump", jump);
+        PlayerPrefs.Save();
     }
 
     public void GameOver()
