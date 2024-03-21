@@ -17319,6 +17319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 663586031660241149, guid: 5efb900559eee7046b9788ba5e81b168, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6330253803931270309, guid: 5efb900559eee7046b9788ba5e81b168, type: 3}
       propertyPath: m_Name
       value: LevelLoader

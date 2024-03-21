@@ -71624,7 +71624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1259572251}
   waypoint: {fileID: 495262935}
-  sceneName: Village
+  sceneName: Mission_1
   transition: {fileID: 1266524075}
 --- !u!1 &2032238185
 GameObject:
