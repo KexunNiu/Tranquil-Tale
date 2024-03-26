@@ -27,4 +27,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");
     }
+    
+    public void Charts()
+    {
+        SceneManager.LoadScene("Leaderboard");
+    }
 }
