@@ -53,14 +53,16 @@ public class EnemyDeath : MonoBehaviour
                     PlayerPrefs.Save();
                 }
             }
+            //when player interact with enemy from left or right, player will be attacked
             else
             {
                 if (Time.time - lastAttackTime > attackCooldown)
                 {
                     soundEffect.clip = attackSoundEffect;
                     soundEffect.Play(); 
-                    Debug.Log("attack");
+                    Debug.Log("is attacked");
                     player.UpdateHealth(attack);
+                    player.Knockback(30f, player.transform.position);
                     lastAttackTime = Time.time;
                 }
             }

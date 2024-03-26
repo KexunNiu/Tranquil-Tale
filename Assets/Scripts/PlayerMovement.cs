@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     public float hit = 1f;
     public float attackCooldown = 1f;
 
+    private float maxSpeed = 10f;
+    private float maxJump = 20f;
+
+
     private enum PlayerState
     {
         idle,
@@ -142,8 +146,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        UpdateHealth(-damage);
+    }
+
+    public void Knockback(float knockbackForce, Vector3 knockbackDirection)
+    {
+        rigidBody.velocity = new Vector2(0, 0);
+        rigidBody.AddForce(new Vector2(0, knockbackForce), ForceMode2D.Impulse);
+        StartCoroutine(FlashRed());
+    }
+
+    private IEnumerator FlashRed()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
     public void UpdateSpeed(float speedChange)
     {
+        if (speed + speedChange > maxSpeed)
+        {
+            speed = maxSpeed;
+        }
+        else
+        {
+            speed += speedChange;
+        }
         speed += speedChange;
         PlayerPrefs.SetFloat("speed", speed);
         PlayerPrefs.Save();
@@ -151,6 +182,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateJump(float jumpChange)
     {
+        if (jump + jumpChange > maxJump)
+        {
+            jump = maxJump;
+        }
+        else
+        {
+            jump += jumpChange;
+        }
         jump += jumpChange;
         PlayerPrefs.SetFloat("jump", jump);
         PlayerPrefs.Save();
