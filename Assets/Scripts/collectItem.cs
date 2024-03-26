@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class collectItem : MonoBehaviour
 {   private AudioSource soundEffect;
@@ -22,29 +23,28 @@ public class collectItem : MonoBehaviour
             {
                 isPlayed = true;
                 soundEffect.Play();
-                animator.SetBool("Collected", true);
                 PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
-
-                if (player != null && gameObject.CompareTag("Pineapple"))
+                if (player != null && gameObject.CompareTag("End"))
                 {
-                    player.UpdateHealth(1);
+                    SceneManager.LoadScene("Win");
+                } else {
+                    animator.SetBool("Collected", true);
+
+                    if (player != null && gameObject.CompareTag("Pineapple"))
+                    {
+                        player.UpdateHealth(1);
+                    }
+
+                    if (player != null && gameObject.CompareTag("Banana"))
+                    {
+                        player.UpdateSpeed(2);
+                    }
+
+                    if (player != null && gameObject.CompareTag("Apple"))
+                    {
+                        player.UpdateJump(2);
+                    }
                 }
-
-                if (player != null && gameObject.CompareTag("Banana"))
-                {
-                    player.UpdateSpeed(2);
-                }
-
-                if (player != null && gameObject.CompareTag("Apple"))
-                {
-                    player.UpdateJump(2);
-                }
-
-
-                // if (player != null)
-                // {
-                //     player.UpdateHealth(1);
-                // }
             }
             Destroy(gameObject, soundEffect.clip.length);
         }

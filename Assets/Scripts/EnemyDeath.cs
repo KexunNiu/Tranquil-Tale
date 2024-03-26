@@ -65,18 +65,6 @@ public class EnemyDeath : MonoBehaviour
                 }
             }
         }
-        
-        /*if (hit.collider != null)
-        {
-            animator.SetTrigger("Death");
-
-            if (!isSoundPlaying)
-            {
-                soundEffect.Play();
-                isSoundPlaying = true;
-            }
-            Destroy(gameObject, 1f);
-        }*/
     }
 
     private void die()
