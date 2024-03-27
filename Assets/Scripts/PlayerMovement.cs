@@ -131,6 +131,10 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded(){
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
     }
+
+    public bool isPlayerJumping(){
+        return isJumping;
+    }
     
     public void UpdateHealth(float healthChange)
     {

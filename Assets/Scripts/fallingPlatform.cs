@@ -30,6 +30,7 @@ public class fallingPlatform : MonoBehaviour
     private void fall()
     {
         rb2d.isKinematic = false;
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         //rise up the platform back to its original position after 5 seconds
         Invoke("Respawn", 5f);
     }
