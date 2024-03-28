@@ -37,12 +37,12 @@ public class collectItem : MonoBehaviour
 
                     if (player != null && gameObject.CompareTag("Banana"))
                     {
-                        player.UpdateSpeed(2);
+                        player.UpdateSpeed(1);
                     }
 
                     if (player != null && gameObject.CompareTag("Apple"))
                     {
-                        player.UpdateJump(2);
+                        player.UpdateJump(1);
                     }
                 }
             }
