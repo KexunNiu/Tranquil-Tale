@@ -3087,10 +3087,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9726b88ac2f594b96354435f058829, type: 3}
+  m_Script: {fileID: 11500000, guid: 007a9172bd3fa5b45aafba30e48fd10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1259572251}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &521017440
 PrefabInstance:
   m_ObjectHideFlags: 0

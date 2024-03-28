@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Mission_1.unity
     guid: bed8fa4a05f311b4a896e53beb039398
   - enabled: 1
+    path: Assets/Scenes/Mission_1_Secret.unity
+    guid: ac5a640a4ba6d244d899026a69ec742d
+  - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: 752b3d1d47cbff346aeb020ea78e91b1
   - enabled: 1
