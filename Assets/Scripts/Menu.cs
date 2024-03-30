@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
-//when player press this button, resume the game to normal speed and close the pause menu
 
     public void StartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Tutorial");
         PlayerPrefs.DeleteAll();
     }
@@ -22,14 +22,27 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-    
+
     public void Main()
     {
         SceneManager.LoadScene("StartMenu");
+        GameObject resumeButtonObject = GameObject.Find("Resume");
+
+
     }
-    
+    public void MainMenu()
+    {
+        SceneManager.UnloadSceneAsync("PauseMenu");
+        SceneManager.LoadScene("StartMenu", LoadSceneMode.Additive);
+
+    }
+
     public void Charts()
     {
         SceneManager.LoadScene("Leaderboard");
     }
+
+
+
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
-{   
+{
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTime = 0.4f;
     private float jumpTimeCounter;
     private bool isJumping;
-    
+
     private float maxHealth = 5f;
     private float currHealth;
     public HPBar bar;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float maxSpeed = 10f;
     private float maxJump = 20f;
-
+    public bool played = false;
 
     private enum PlayerState
     {
@@ -47,15 +47,15 @@ public class PlayerMovement : MonoBehaviour
         speed = PlayerPrefs.GetFloat("speed", speed);
         jump = PlayerPrefs.GetFloat("jump", jump);
         currHealth = PlayerPrefs.GetFloat("CurrHealth", maxHealth);
-        
+
         bar = FindObjectOfType<HPBar>();
         if (bar == null)
         {
             Debug.LogError("bar not found in the scene.");
         }
-        Debug.Log("max "+ maxHealth);
+        Debug.Log("max " + maxHealth);
         bar.SetValue(currHealth, maxHealth);
-        
+
     }
 
     // Update is called once per frame
@@ -89,20 +89,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //when player press escape, pause game and open the pause menu
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             Time.timeScale = 0;
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            played = true;
         }
 
         updateAnimation(horizontal);
     }
-    
-    private void updateAnimation(float horizontal){
+
+    private void updateAnimation(float horizontal)
+    {
 
         PlayerState state;
 
         if (horizontal < 0)
-        {   
+        {
             spriteRenderer.flipX = true;
             state = PlayerState.running;
         }
@@ -128,14 +131,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger("state", (int)state);
     }
 
-    public bool isGrounded(){
+    public bool isGrounded()
+    {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
     }
 
-    public bool isPlayerJumping(){
+    public bool isPlayerJumping()
+    {
         return isJumping;
     }
-    
+
     public void UpdateHealth(float healthChange)
     {
         currHealth += healthChange;
