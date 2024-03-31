@@ -9,12 +9,12 @@ public class cameraController : MonoBehaviour
 
     private Camera cam;
 
-    private float normalFOV = 20f;
+    private float normalFOV = 18f;
     private float zoomedOutFOV = 30f;
 
     private float smoothness = 7f;
 
-    private float yOffSet = 0f;
+    private float yOffSet = 1f;
 
     // Start is called before the first frame update
     private void Start()
